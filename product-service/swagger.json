@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Product Service API",
+    "version": "1.0.0",
+    "description": "API para gestionar productos"
+  },
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Operaciones relacionadas con los productos"
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Listar productos",
+        "responses": {
+          "200": {
+            "description": "Lista de productos"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Products"],
+        "summary": "Crear producto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Producto creado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "price": { "type": "number" }
+        }
+      }
+    }
+  }
+}
